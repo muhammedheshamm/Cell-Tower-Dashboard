@@ -1,0 +1,15 @@
+@use 'variables' as v;
+
+// Global styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: v.$font-family;
+  font-weight: 400;
+  color: v.$text-color;
+  background-color: v.$background-color;
+}
