@@ -1,0 +1,85 @@
+@use '../../styles/variables' as v;
+@use "sass:color";
+
+.card {
+  background: v.$color-light-gray;
+  border-radius: v.$border-radius;
+  padding: 20px;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  display: flex;
+  gap: 16px;
+  min-width: 200px;
+  animation: cardEntrance 0.6s ease-out;
+  border-top: 4px solid transparent;
+
+  
+  &:hover {
+    transform: translateY(-4px);    
+    .card__icon {
+      transform: scale(1.05);
+    }
+  }
+  
+  &__icon {
+    transition: transform 0.3s ease-in-out;
+    
+    svg {
+      width: 32px;
+      height: 32px;
+    }
+  }
+  
+  &__title {
+    font-size: 12px;
+    font-weight: 600;
+    color: v.$color-medium-gray;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0 0 8px 0;
+  }
+  
+  &__value {
+    font-size: 28px;
+    font-weight: 700;
+    color: v.$color-dark-gray;
+    line-height: 1.2;
+  }
+  
+  // Color variants
+  &--primary {
+    border-color: v.$color-primary;
+    
+    .card__icon svg {
+      color: v.$color-primary;
+    }
+  }
+  
+  &--success {
+    border-color: v.$color-success;
+    
+    .card__icon svg {
+      color: v.$color-success;
+    }
+  }
+  
+  &--secondary {
+    border-color: v.$color-secondary;
+  
+    .card__icon svg {
+      color: v.$color-secondary;
+    }
+  }
+}
+
+
+@keyframes cardEntrance {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+} 
