@@ -1,0 +1,201 @@
+@use "../../styles/variables" as v;
+@use "sass:color";
+
+.towers-table {
+  padding: 40px 0;
+
+  &__header {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+
+  &__title {
+    font-size: 24px;
+    font-weight: 700;
+    color: v.$color-dark-gray;
+    margin-bottom: 8px;
+  }
+
+  &__subtitle {
+    font-size: 14px;
+    color: v.$color-medium-gray;
+    margin-bottom: 16px;
+  }
+
+  &__scroll-hint {
+    display: block;
+    text-align: center;
+    font-size: 12px;
+    color: v.$color-medium-gray;
+    margin-bottom: 16px;
+
+    @media (min-width: v.$breakpoint-mobile) {
+      display: none;
+    }
+  }
+
+  &__container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+
+    &::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: v.$color-light-gray;
+      border-radius: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: v.$color-medium-gray;
+      border-radius: 4px;
+    }
+  }
+
+  &__table {
+    width: 100%;
+    min-width: 800px;
+    border-collapse: collapse;
+    box-shadow: v.$shadow;
+
+    th,
+    td {
+      padding: 16px 12px;
+      text-align: left;
+      white-space: nowrap;
+
+      @media (min-width: v.$breakpoint-mobile) {
+        padding: 16px;
+      }
+    }
+
+    th {
+      background: v.$color-light-gray;
+      font-weight: 600;
+      color: v.$color-dark-gray;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border: 1px solid v.$color-light-gray;
+    }
+
+    td {
+      font-size: 14px;
+      color: v.$color-dark-gray;
+    }
+
+    .tower-row {
+      transition: background-color 0.2s ease;
+
+      &:hover {
+        background: #f9fafb;
+      }
+
+      &.active {
+        border-left: 2px solid v.$color-success;
+      }
+
+      &.offline {
+        border-left: 2px solid v.$color-error;
+      }
+
+      &:not(:last-child) {
+        border-bottom: 1px solid v.$color-light-gray;
+      }
+    }
+  }
+}
+
+.tower-name {
+  &__content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+
+    svg {
+      color: v.$color-primary;
+      font-size: 20px;
+    }
+  }
+}
+
+.tower-city {
+  &__content {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: v.$color-medium-gray;
+
+    svg {
+      font-size: 16px;
+    }
+  }
+}
+
+.network-badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: v.$border-radius-small;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+
+  &.network-5g {
+    background: rgba(v.$color-success, 0.2);
+    color: v.$color-success;
+  }
+
+  &.network-4g {
+    background: rgba(v.$color-warning, 0.2);
+    color: v.$color-warning;
+  }
+}
+
+.status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  svg {
+    font-size: 16px;
+  }
+
+  svg.active {
+    color: v.$color-success;
+  }
+
+  svg.offline {
+    color: v.$color-error;
+  }
+
+  .status-text {
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+
+    &.active {
+      color: v.$color-success;
+    }
+
+    &.offline {
+      color: v.$color-error;
+    }
+  }
+}
+
+.signal-display {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  font-size: 14px;
+  color: v.$color-dark-gray;
+  font-weight: 500;
+
+  svg {
+    font-size: 16px;
+    color: v.$color-primary;
+  }
+}

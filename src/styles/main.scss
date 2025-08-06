@@ -1,4 +1,4 @@
-@use 'variables' as v;
+@use "variables" as v;
 
 // Global Styles
 * {
@@ -8,8 +8,8 @@
 }
 
 body {
-  font-family: 'Helvetica Neue', Arial, sans-serif;
-  background-color: v.$color-light-gray;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  background-color: v.$color-white;
   color: v.$color-dark-gray;
   line-height: 1.6;
 }
