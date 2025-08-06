@@ -1,6 +1,6 @@
 @use 'variables' as v;
 
-// Global styles
+// Global Styles
 * {
   margin: 0;
   padding: 0;
@@ -8,8 +8,41 @@
 }
 
 body {
-  font-family: v.$font-family;
-  font-weight: 400;
-  color: v.$text-color;
-  background-color: v.$background-color;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  background-color: v.$color-light-gray;
+  color: v.$color-dark-gray;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 20px;
+
+  @media (min-width: v.$breakpoint-mobile) {
+    padding: 0;
+  }
+}
+
+// Animations
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
