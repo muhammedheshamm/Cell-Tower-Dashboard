@@ -7,7 +7,7 @@ import "./Filters.scss";
 interface FiltersProps {
   towers: CellTower[];
   filters: FilterState;
-  setFilters: (filters: FilterState) => void;
+  setFilters: React.Dispatch<React.SetStateAction<FilterState>>;
 }
 
 const Filters: React.FC<FiltersProps> = ({ towers, filters, setFilters }) => {
@@ -31,6 +31,17 @@ const Filters: React.FC<FiltersProps> = ({ towers, filters, setFilters }) => {
     const newFilters = { ...filters, [key]: value };
     setFilters(newFilters);
   };
+
+  const clearAllFilters = () => {
+    setFilters((old) => ({
+      ...old,
+      city: "",
+      network: "",
+      status: "",
+    }));
+  };
+
+  const hasActiveFilters = filters.city || filters.network || filters.status;
 
   return (
     <div className="filters container">
@@ -95,6 +106,16 @@ const Filters: React.FC<FiltersProps> = ({ towers, filters, setFilters }) => {
           ))}
         </select>
       </div>
+
+      {hasActiveFilters && (
+        <button
+          type="button"
+          onClick={clearAllFilters}
+          className="clear-filters-btn"
+        >
+          Clear filters
+        </button>
+      )}
     </div>
   );
 };

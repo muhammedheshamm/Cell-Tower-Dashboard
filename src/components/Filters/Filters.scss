@@ -86,7 +86,7 @@
 }
 
 .filter-select-field {
-  padding: 12px;
+  padding: 10px 12px;
   border: 1px solid v.$color-light-gray;
   border-radius: v.$border-radius;
   color: v.$color-dark-gray;
@@ -122,6 +122,7 @@
 // meant for accessibility and better styling control
 .filter-select-field {
   appearance: base-select;
+  text-transform: capitalize;
 
   &::picker(select) {
     appearance: base-select;
@@ -151,6 +152,7 @@
   option {
     padding: 8px 10px;
     color: v.$color-dark-gray;
+    text-transform: capitalize;
 
     &:not(:last-child) {
       border-bottom: 1px solid v.$color-light-gray;
@@ -164,5 +166,28 @@
       background-color: rgb(v.$color-primary, 0.9);
       color: v.$color-white;
     }
+  }
+}
+
+.clear-filters-btn {
+  background: none;
+  border: none;
+  color: v.$color-medium-gray;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.2s ease;
+  padding: 0;
+  margin: 0;
+
+  &:hover {
+    color: v.$color-primary;
+  }
+
+  &:focus {
+    outline: none;
+    color: v.$color-primary;
   }
 }
