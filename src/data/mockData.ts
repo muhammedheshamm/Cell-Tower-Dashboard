@@ -27,7 +27,7 @@ export const mockTowers: CellTower[] = [
   },
   {
     id: "4",
-    name: "Alexandria Port Tower",
+    name: "Cairo Port Tower",
     city: "Cairo",
     networkType: "4G",
     status: "active",
