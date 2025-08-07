@@ -19,13 +19,26 @@
 
   &__text {
     flex: 1;
+    animation: textEntrance 0.8s ease-out;
   }
 
   &__title {
     font-size: 30px;
     font-weight: 700;
-    margin-bottom: 4px;
-    animation: slideInDown 0.6s ease-out;
+    margin-bottom: 10px;
+    animation: slideInDown 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, v.$color-primary, v.$color-secondary);
+      animation: titleUnderline 1s ease-out 0.5s forwards;
+    }
 
     @media (max-width: v.$breakpoint-mobile) {
       font-size: 24px;
@@ -35,7 +48,8 @@
   &__subtitle {
     font-size: 14px;
     opacity: 0.9;
-    animation: slideInUp 0.6s ease-out;
+    animation: slideInUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s both;
+    position: relative;
   }
 
   &__cards {
@@ -43,10 +57,67 @@
     flex-direction: column;
     gap: 12px;
     width: 100%;
+    animation: cardsContainerEntrance 1s ease-out 0.3s both;
 
     @media (min-width: v.$breakpoint-mobile) {
       flex-direction: row;
       width: fit-content;
+    }
+
+    // Add staggered animation for individual cards
+    .card {
+      &:nth-child(1) {
+        animation-delay: 0.4s;
+      }
+      &:nth-child(2) {
+        animation-delay: 0.6s;
+      }
+      &:nth-child(3) {
+        animation-delay: 0.8s;
+      }
+    }
+  }
+}
+
+@keyframes textEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes titleUnderline {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes cardsContainerEntrance {
+  0% {
+    transform: translateY(10px) scale(0.95);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+// Add responsive animations
+@media (prefers-reduced-motion: reduce) {
+  .header {
+    &::before {
+      animation: none;
+    }
+
+    &__title::after {
+      animation: none;
+      width: 100%;
     }
   }
 }

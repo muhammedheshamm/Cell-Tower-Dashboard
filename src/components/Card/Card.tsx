@@ -1,23 +1,22 @@
-import React from 'react';
-import './Card.scss';
+import React from "react";
+import "./Card.scss";
 
 interface CardProps {
   title: string;
   content: string | number;
   icon: React.ReactNode;
-  color?: 'primary' | 'success' | 'secondary';
-  delay?: number;
+  color?: "primary" | "success" | "secondary";
 }
 
-const Card: React.FC<CardProps> = ({ title, content, icon, color = 'primary', delay = 0 }) => {
+const Card: React.FC<CardProps> = ({
+  title,
+  content,
+  icon,
+  color = "primary",
+}) => {
   return (
-    <div 
-      className={`card card--${color}`}
-      style={{ animationDelay: `${delay}s` }}
-    >
-      <div className="card__icon">
-        {icon}
-      </div>
+    <div className={`card card--${color}`}>
+      <div className="card__icon">{icon}</div>
       <div className="card__content">
         <h3 className="card__title">{title}</h3>
         <p className="card__value">{content}</p>
@@ -26,4 +25,4 @@ const Card: React.FC<CardProps> = ({ title, content, icon, color = 'primary', de
   );
 };
 
-export default Card; 
+export default Card;

@@ -37,21 +37,18 @@ function Header({ towers, error }: HeaderProps) {
               content={totalTowers.toString()}
               icon={<FaBroadcastTower />}
               color="primary"
-              delay={0.1}
             />
             <Card
               title="Active Towers"
               content={activeTowers.toString()}
               icon={<FaCheckCircle />}
               color="success"
-              delay={0.2}
             />
             <Card
               title="Average Signal"
               content={`${averageSignal}/5`}
               icon={<FaSignal />}
               color="secondary"
-              delay={0.3}
             />
           </section>
         )}
