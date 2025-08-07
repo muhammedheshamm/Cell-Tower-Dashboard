@@ -77,6 +77,14 @@ function Home() {
           </>
         )}
       </div>
+      <footer className="footer">
+        <div className="container main-padding footer__content">
+          <p>
+            © {new Date().getFullYear()} Cell Tower Dashboard | Created by
+            Muhammed Hesham
+          </p>
+        </div>
+      </footer>
     </>
   );
 }

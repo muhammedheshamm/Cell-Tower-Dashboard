@@ -68,3 +68,14 @@
 .mt-2 {
   margin-top: 0.5rem;
 }
+
+.footer {
+  padding: 24px 0;
+  background-color: v.$color-dark-gray;
+
+  &__content {
+    text-align: center;
+    font-size: 14px;
+    color: v.$color-light-gray;
+  }
+}
