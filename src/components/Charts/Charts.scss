@@ -4,27 +4,8 @@
   display: flex;
   flex-direction: column;
   gap: 40px;
-  &__header {
-    text-align: center;
-    margin-bottom: 40px;
-  }
-
-  &__title {
-    font-size: 28px;
-    font-weight: 700;
-    color: v.$color-dark-gray;
-    margin-bottom: 8px;
-  }
-
-  &__subtitle {
-    font-size: 16px;
-    color: v.$color-medium-gray;
-  }
 
   &__section {
-    display: flex;
-    flex-direction: column;
-
     text-align: center;
 
     @media (min-width: v.$breakpoint-tablet) {
