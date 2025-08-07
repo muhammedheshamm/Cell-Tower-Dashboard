@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useMemo } from "react";
 import type { CellTower } from "../../types";
 import {
   FaBroadcastTower,
@@ -7,6 +7,9 @@ import {
   FaMapMarkerAlt,
 } from "react-icons/fa";
 import Signal from "../Signal/Signal";
+import Filters from "../Filters/Filters";
+import type { FilterState } from "../../types";
+import { highlightText } from "../../utils/highlightText";
 
 import "./TowersTable.scss";
 
@@ -15,6 +18,43 @@ interface TowersTableProps {
 }
 
 const TowersTable: React.FC<TowersTableProps> = ({ towers }) => {
+  const [filters, setFilters] = useState<FilterState>({
+    search: "",
+    city: "",
+    network: "",
+    status: "",
+  });
+
+  // Filter towers based on current filters
+  const filteredTowers = useMemo(() => {
+    return towers.filter((tower) => {
+      // Search filter
+      if (
+        filters.search &&
+        !tower.name.toLowerCase().includes(filters.search.toLowerCase())
+      ) {
+        return false;
+      }
+
+      // City filter
+      if (filters.city && tower.city !== filters.city) {
+        return false;
+      }
+
+      // Network filter
+      if (filters.network && tower.networkType !== filters.network) {
+        return false;
+      }
+
+      // Status filter
+      if (filters.status && tower.status !== filters.status) {
+        return false;
+      }
+
+      return true;
+    });
+  }, [towers, filters]);
+
   const getStatusIcon = (status: "active" | "offline") => {
     return status === "active" ? (
       <FaCheckCircle className="active" />
@@ -32,13 +72,15 @@ const TowersTable: React.FC<TowersTableProps> = ({ towers }) => {
       <div className="towers-table__header container">
         <h2 className="towers-table__title">Cell Towers Overview</h2>
         <p className="towers-table__subtitle">
-          {towers.length} towers across{" "}
+          {filteredTowers.length} of {towers.length} towers across{" "}
           {new Set(towers.map((t) => t.city)).size} cities
         </p>
         <p className="towers-table__scroll-hint">
           ← Scroll horizontally to see all columns →
         </p>
       </div>
+
+      <Filters towers={towers} onFiltersChange={setFilters} />
 
       {/* Table View */}
       <div className="towers-table__container container">
@@ -53,12 +95,12 @@ const TowersTable: React.FC<TowersTableProps> = ({ towers }) => {
             </tr>
           </thead>
           <tbody>
-            {towers.map((tower) => (
+            {filteredTowers.map((tower) => (
               <tr key={tower.id} className={`tower-row ${tower.status}`}>
                 <td className="tower-name">
                   <div className="tower-name__content">
                     <FaBroadcastTower />
-                    <span>{tower.name}</span>
+                    <span>{highlightText(tower.name, filters.search)}</span>
                   </div>
                 </td>
                 <td className="tower-city">

@@ -6,7 +6,7 @@
 
   &__header {
     text-align: center;
-    margin-bottom: 32px;
+    margin-bottom: 24px;
   }
 
   &__title {
@@ -19,7 +19,6 @@
   &__subtitle {
     font-size: 14px;
     color: v.$color-medium-gray;
-    margin-bottom: 16px;
   }
 
   &__scroll-hint {
@@ -27,14 +26,14 @@
     text-align: center;
     font-size: 12px;
     color: v.$color-medium-gray;
-    margin-bottom: 16px;
-
+    margin-top: 16px;
     @media (min-width: v.$breakpoint-mobile) {
       display: none;
     }
   }
 
   &__container {
+    margin-top: 12px;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
 
@@ -195,4 +194,11 @@
   font-size: 14px;
   color: v.$color-dark-gray;
   font-weight: 500;
+}
+
+.highlight {
+  background: rgba(v.$color-warning, 0.3);
+  color: v.$color-dark-gray;
+  padding: 1px;
+  border-radius: 2px;
 }

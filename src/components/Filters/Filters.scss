@@ -1,0 +1,104 @@
+@use "../../styles/variables" as v;
+
+.filters {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 16px;
+
+  @media (min-width: v.$breakpoint-mobile) {
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  &__search {
+    width: 100%;
+    position: relative;
+
+    @media (min-width: v.$breakpoint-mobile) {
+      width: auto;
+      flex: 1;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: v.$color-medium-gray;
+      font-size: 14px;
+      pointer-events: none;
+    }
+
+    .search-field {
+      width: 100%;
+      padding: 12px 12px 12px 40px;
+      border: 1px solid v.$color-light-gray;
+      border-radius: v.$border-radius;
+      font-size: 14px;
+      color: v.$color-dark-gray;
+      transition: all 0.2s ease;
+
+      &::placeholder {
+        color: v.$color-medium-gray;
+      }
+
+      &:focus {
+        outline: none;
+        border-color: v.$color-primary;
+        box-shadow: 0 0 2px 2px rgba(v.$color-primary, 0.1);
+      }
+    }
+  }
+
+  &__dropdowns {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+
+    @media (min-width: v.$breakpoint-mobile) {
+      gap: 12px;
+    }
+  }
+}
+
+.filter-select-field {
+  padding: 12px;
+  border: 1px solid v.$color-light-gray;
+  border-radius: v.$border-radius;
+  color: v.$color-dark-gray;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 100px;
+
+  &:hover {
+    border-color: v.$color-primary;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: v.$color-primary;
+    box-shadow: 0 0 2px 2px rgba(v.$color-primary, 0.1);
+  }
+
+  &.active {
+    border-color: v.$color-primary;
+    background-color: rgba(v.$color-primary, 0.05);
+    color: v.$color-primary;
+  }
+
+  option {
+    padding: 8px;
+    background: v.$color-white;
+    color: v.$color-dark-gray;
+  }
+
+  @media (min-width: v.$breakpoint-mobile) {
+    min-width: 120px;
+  }
+}
