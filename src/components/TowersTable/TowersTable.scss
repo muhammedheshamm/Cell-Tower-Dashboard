@@ -43,16 +43,7 @@
 
     &::-webkit-scrollbar {
       height: 8px;
-    }
-
-    &::-webkit-scrollbar-track {
-      background: v.$color-light-gray;
-      border-radius: 4px;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background: v.$color-medium-gray;
-      border-radius: 4px;
+      display: none;
     }
   }
 

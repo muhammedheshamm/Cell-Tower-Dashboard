@@ -11,7 +11,7 @@ interface ChartsProps {
 
 const Charts: React.FC<ChartsProps> = ({ towers }) => {
   return (
-    <div className="charts">
+    <div className="charts main-padding">
       <div className="charts__section">
         <h3 className="charts__section-title">Tower Distribution by City</h3>
         <p className="charts__section-description">
