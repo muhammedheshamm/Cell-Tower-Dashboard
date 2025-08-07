@@ -1,0 +1,70 @@
+@use "../styles/variables" as v;
+
+.home-content {
+  padding-top: 20px;
+  padding-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  @media (min-width: v.$breakpoint-mobile) {
+    flex-direction: row;
+    padding-top: 30px;
+  }
+}
+
+.error-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 300px;
+  padding: 2rem;
+}
+
+.error-message {
+  text-align: center;
+  max-width: 500px;
+
+  h3 {
+    font-size: 35px;
+    color: v.$color-error;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    margin-bottom: 1.5rem;
+    color: v.$color-dark-gray;
+  }
+}
+
+.retry-button {
+  background-color: v.$color-primary;
+  color: white;
+  border: none;
+  border-radius: v.$border-radius-small;
+  padding: 0.5rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: opacity 0.3s;
+
+  &:hover {
+    opacity: 0.95;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
+.mb-3 {
+  margin-bottom: 1rem;
+}
+
+.mt-2 {
+  margin-top: 0.5rem;
+}

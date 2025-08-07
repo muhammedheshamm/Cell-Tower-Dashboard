@@ -1,0 +1,23 @@
+.shimmer-loading {
+  background: linear-gradient(
+    90deg,
+    rgba(220, 220, 220, 0.1) 0%,
+    rgba(220, 220, 220, 0.2) 20%,
+    rgba(220, 220, 220, 0.5) 60%,
+    rgba(220, 220, 220, 0.2) 80%,
+    rgba(220, 220, 220, 0.1) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+  position: relative;
+  overflow: hidden;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
