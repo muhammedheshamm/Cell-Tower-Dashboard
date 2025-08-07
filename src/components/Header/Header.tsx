@@ -1,17 +1,21 @@
 import "./Header.scss";
 import Card from "../Card/Card";
 import { FaBroadcastTower, FaCheckCircle, FaSignal } from "react-icons/fa";
-import { mockTowers } from "../../data/mockData";
+import type { CellTower } from "../../types";
 
-const totalTowers = mockTowers.length;
-const activeTowers = mockTowers.filter(
-  (tower) => tower.status === "active"
-).length;
-const averageSignal = (
-  mockTowers.reduce((sum, tower) => sum + tower.signalStrength, 0) / totalTowers
-).toFixed(1);
+interface HeaderProps {
+  towers: CellTower[];
+}
 
-function Header() {
+function Header({ towers }: HeaderProps) {
+  const totalTowers = towers.length;
+  const activeTowers = towers.filter(
+    (tower) => tower.status === "active"
+  ).length;
+  const averageSignal = totalTowers > 0 
+    ? (towers.reduce((sum, tower) => sum + tower.signalStrength, 0) / totalTowers).toFixed(1)
+    : "0.0";
+
   return (
     <header className="header">
       <div className="container header__content main-padding">

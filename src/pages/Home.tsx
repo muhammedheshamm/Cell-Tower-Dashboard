@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Header from "../components/Header/Header";
+import HeaderShimmer from "../components/Header/HeaderShimmer";
 import TowersTable from "../components/TowersTable/TowersTable";
 import TowersTableShimmer from "../components/TowersTable/TowersTableShimmer";
 import Charts from "../components/Charts/Charts";
@@ -52,7 +53,7 @@ function Home() {
 
   return (
     <>
-      <Header />
+      {loading ? <HeaderShimmer /> : <Header towers={towers} />}
       <div className="home-content container">
         {error ? (
           <div className="error-container">

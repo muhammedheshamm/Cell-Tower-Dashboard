@@ -22,19 +22,19 @@ const TowersTableShimmer: React.FC = () => {
         <table className="towers-table__table">
           <thead>
             <tr>
-              <th>
+              <th style={{ backgroundColor: "transparent", border: "none" }}>
                 <Shimmer height={24} />
               </th>
-              <th>
+              <th style={{ backgroundColor: "transparent", border: "none" }}>
                 <Shimmer height={24} />
               </th>
-              <th>
+              <th style={{ backgroundColor: "transparent", border: "none" }}>
                 <Shimmer height={24} />
               </th>
-              <th>
+              <th style={{ backgroundColor: "transparent", border: "none" }}>
                 <Shimmer height={24} />
               </th>
-              <th>
+              <th style={{ backgroundColor: "transparent", border: "none" }}>
                 <Shimmer height={24} />
               </th>
             </tr>
