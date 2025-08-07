@@ -98,6 +98,7 @@
 
   &:hover {
     border-color: v.$color-primary;
+    background-color: rgba(v.$color-primary, 0.05);
   }
 
   &:focus {
@@ -112,13 +113,56 @@
     color: v.$color-primary;
   }
 
-  option {
-    padding: 8px;
-    background: v.$color-white;
-    color: v.$color-dark-gray;
-  }
-
   @media (min-width: v.$breakpoint-mobile) {
     min-width: 120px;
+  }
+}
+
+// using the new CSS Customizable Select Features if supported and fallback to the normal select if not
+// meant for accessibility and better styling control
+.filter-select-field {
+  appearance: base-select;
+
+  &::picker(select) {
+    appearance: base-select;
+  }
+
+  &::picker-icon {
+    content: "";
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z'/%3E%3C/svg%3E")
+      no-repeat center;
+    background-size: 20px;
+    width: 20px;
+    transition: rotate 0.4s;
+  }
+
+  &:open {
+    &::picker-icon {
+      rotate: 180deg;
+    }
+  }
+
+  &::picker(select) {
+    border: 1px solid v.$color-primary;
+    border-radius: v.$border-radius;
+    margin-top: 6px;
+  }
+
+  option {
+    padding: 8px 10px;
+    color: v.$color-dark-gray;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid v.$color-light-gray;
+    }
+
+    &:hover {
+      background-color: rgba(v.$color-primary, 0.1);
+    }
+
+    &:checked {
+      background-color: rgb(v.$color-primary, 0.9);
+      color: v.$color-white;
+    }
   }
 }
