@@ -1,21 +1,15 @@
-import React, { useState, useMemo } from "react";
+import { useMemo } from "react";
 import { FaSearch } from "react-icons/fa";
 import type { CellTower, FilterState } from "../../types";
 import "./Filters.scss";
 
 interface FiltersProps {
   towers: CellTower[];
-  onFiltersChange: (filters: FilterState) => void;
+  filters: FilterState;
+  setFilters: (filters: FilterState) => void;
 }
 
-const Filters: React.FC<FiltersProps> = ({ towers, onFiltersChange }) => {
-  const [filters, setFilters] = useState<FilterState>({
-    search: "",
-    city: "",
-    network: "",
-    status: "",
-  });
-
+const Filters: React.FC<FiltersProps> = ({ towers, filters, setFilters }) => {
   // unique values for dropdowns
   const uniqueCities = useMemo(
     () => Array.from(new Set(towers.map((tower) => tower.city))).sort(),
@@ -35,7 +29,6 @@ const Filters: React.FC<FiltersProps> = ({ towers, onFiltersChange }) => {
   const handleFilterChange = (key: keyof FilterState, value: string) => {
     const newFilters = { ...filters, [key]: value };
     setFilters(newFilters);
-    onFiltersChange(newFilters);
   };
 
   return (

@@ -80,7 +80,7 @@ const TowersTable: React.FC<TowersTableProps> = ({ towers }) => {
         </p>
       </div>
 
-      <Filters towers={towers} onFiltersChange={setFilters} />
+      <Filters towers={towers} filters={filters} setFilters={setFilters} />
 
       {/* Table View */}
       <div className="towers-table__container container">
