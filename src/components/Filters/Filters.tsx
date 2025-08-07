@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 import { FaSearch } from "react-icons/fa";
+import { RxCross1 } from "react-icons/rx";
 import type { CellTower, FilterState } from "../../types";
 import "./Filters.scss";
 
@@ -43,6 +44,12 @@ const Filters: React.FC<FiltersProps> = ({ towers, filters, setFilters }) => {
           onChange={(e) => handleFilterChange("search", e.target.value)}
           className="search-field"
         />
+        {filters.search && (
+          <RxCross1
+            className="clear-icon"
+            onClick={() => handleFilterChange("search", "")}
+          />
+        )}
       </div>
 
       <div className="filters__dropdowns">
