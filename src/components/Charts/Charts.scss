@@ -7,7 +7,7 @@
 
   &__section {
     text-align: center;
-
+    animation: slideInUp 0.6s ease-out;
     @media (min-width: v.$breakpoint-tablet) {
       text-align: left;
     }
