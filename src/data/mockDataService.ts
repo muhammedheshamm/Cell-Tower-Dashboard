@@ -5,7 +5,7 @@ import type { CellTower } from "../types";
 const DELAY_TIME = 2000;
 
 // Simulated error rate (20% chance of error)
-const ERROR_RATE = 0.2;
+const ERROR_RATE = 0.1;
 
 /**
  * Fetches tower data with a simulated delay and potential error
