@@ -1,0 +1,29 @@
+@use "../../styles/variables" as v;
+
+.status-pie-chart {
+  svg {
+    display: block;
+    margin: 0 auto;
+  }
+
+  .slice:hover {
+    cursor: pointer;
+    opacity: 0.9;
+    transition: opacity 0.2s ease-in-out;
+  }
+
+  .chart-title {
+    font-family: inherit;
+  }
+
+  .legend {
+    .legend-item {
+      cursor: pointer;
+      transition: opacity 0.2s ease-in-out;
+
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+  }
+}

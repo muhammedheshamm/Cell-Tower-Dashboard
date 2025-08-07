@@ -1,0 +1,42 @@
+@use "../../styles/variables" as v;
+
+.city-bar-chart {
+  svg {
+    display: block;
+    margin: 0 auto;
+  }
+
+  .bar {
+    transition: opacity 0.2s ease;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+
+  .bar-label {
+    pointer-events: none;
+  }
+
+  .x-axis,
+  .y-axis {
+    path,
+    line {
+      stroke: v.$color-light-gray;
+    }
+
+    text {
+      fill: v.$color-medium-gray;
+    }
+  }
+
+  .chart-title {
+    font-family: inherit;
+  }
+
+  .x-label,
+  .y-label {
+    font-family: inherit;
+  }
+}
