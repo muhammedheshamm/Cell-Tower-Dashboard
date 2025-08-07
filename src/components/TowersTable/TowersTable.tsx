@@ -6,7 +6,7 @@ import {
   FaTimesCircle,
   FaMapMarkerAlt,
 } from "react-icons/fa";
-import { LuSignal } from "react-icons/lu";
+import Signal from "../Signal/Signal";
 
 import "./TowersTable.scss";
 
@@ -86,8 +86,10 @@ const TowersTable: React.FC<TowersTableProps> = ({ towers }) => {
                 </td>
                 <td>
                   <div className="signal-display">
-                    <LuSignal />
-                    {tower.signalStrength}/5
+                    <Signal strength={tower.signalStrength} size="medium" />
+                    <span className="signal-value">
+                      {tower.signalStrength}/5
+                    </span>
                   </div>
                 </td>
               </tr>

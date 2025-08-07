@@ -1,0 +1,44 @@
+@use "../../styles/variables" as v;
+
+.signal-component {
+  display: inline-flex;
+  align-items: center;
+
+  .signal-svg {
+    display: block;
+  }
+
+  .signal-bar {
+    transition: fill 0.2s ease;
+
+    &.active {
+      fill: v.$color-success;
+    }
+
+    &.inactive {
+      fill: v.$color-light-gray;
+    }
+  }
+
+  // Size variants
+  &.signal--small {
+    .signal-svg {
+      width: 16px;
+      height: 14px;
+    }
+  }
+
+  &.signal--medium {
+    .signal-svg {
+      width: 24px;
+      height: 20px;
+    }
+  }
+
+  &.signal--large {
+    .signal-svg {
+      width: 32px;
+      height: 26px;
+    }
+  }
+}
