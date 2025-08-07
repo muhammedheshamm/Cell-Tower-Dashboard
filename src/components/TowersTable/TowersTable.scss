@@ -56,7 +56,6 @@
     th,
     td {
       padding: 16px 12px;
-      text-align: left;
       white-space: nowrap;
 
       @media (min-width: v.$breakpoint-mobile) {
@@ -72,6 +71,7 @@
       text-transform: uppercase;
       letter-spacing: 0.5px;
       border: 1px solid v.$color-light-gray;
+      text-align: left;
     }
 
     td {
@@ -196,4 +196,9 @@
   color: v.$color-dark-gray;
   padding: 1px;
   border-radius: 2px;
+}
+
+.no-data {
+  text-align: center;
+  color: v.$color-dark-gray;
 }

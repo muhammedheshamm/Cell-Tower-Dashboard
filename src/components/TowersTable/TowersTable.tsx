@@ -95,47 +95,55 @@ const TowersTable: React.FC<TowersTableProps> = ({ towers }) => {
             </tr>
           </thead>
           <tbody>
-            {filteredTowers.map((tower) => (
-              <tr key={tower.id} className={`tower-row ${tower.status}`}>
-                <td className="tower-name">
-                  <div className="tower-name__content">
-                    <FaBroadcastTower />
-                    <span>{highlightText(tower.name, filters.search)}</span>
-                  </div>
-                </td>
-                <td className="tower-city">
-                  <div className="tower-city__content">
-                    <FaMapMarkerAlt />
-                    <span>{tower.city}</span>
-                  </div>
-                </td>
-                <td>
-                  <span
-                    className={`network-badge ${getNetworkTypeColor(
-                      tower.networkType
-                    )}`}
-                  >
-                    {tower.networkType}
-                  </span>
-                </td>
-                <td>
-                  <div className="status-indicator">
-                    {getStatusIcon(tower.status)}
-                    <span className={`status-text ${tower.status}`}>
-                      {tower.status}
+            {filteredTowers.length ? (
+              filteredTowers.map((tower) => (
+                <tr key={tower.id} className={`tower-row ${tower.status}`}>
+                  <td className="tower-name">
+                    <div className="tower-name__content">
+                      <FaBroadcastTower />
+                      <span>{highlightText(tower.name, filters.search)}</span>
+                    </div>
+                  </td>
+                  <td className="tower-city">
+                    <div className="tower-city__content">
+                      <FaMapMarkerAlt />
+                      <span>{tower.city}</span>
+                    </div>
+                  </td>
+                  <td>
+                    <span
+                      className={`network-badge ${getNetworkTypeColor(
+                        tower.networkType
+                      )}`}
+                    >
+                      {tower.networkType}
                     </span>
-                  </div>
-                </td>
-                <td>
-                  <div className="signal-display">
-                    <Signal strength={tower.signalStrength} size="medium" />
-                    <span className="signal-value">
-                      {tower.signalStrength}/5
-                    </span>
-                  </div>
+                  </td>
+                  <td>
+                    <div className="status-indicator">
+                      {getStatusIcon(tower.status)}
+                      <span className={`status-text ${tower.status}`}>
+                        {tower.status}
+                      </span>
+                    </div>
+                  </td>
+                  <td>
+                    <div className="signal-display">
+                      <Signal strength={tower.signalStrength} size="medium" />
+                      <span className="signal-value">
+                        {tower.signalStrength}/5
+                      </span>
+                    </div>
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan={5} className="no-data">
+                  No towers match the current filters.
                 </td>
               </tr>
-            ))}
+            )}
           </tbody>
         </table>
       </div>
