@@ -1,14 +1,18 @@
-import Header from "../components/Header/Header"
-import TowersTable from "../components/TowersTable/TowersTable"
-import { mockTowers } from "../data/mockData"
+import Header from "../components/Header/Header";
+import TowersTable from "../components/TowersTable/TowersTable";
+import Charts from "../components/Charts/Charts";
+import { mockTowers } from "../data/mockData";
 
 function Home() {
   return (
     <>
       <Header />
-      <TowersTable towers={mockTowers} />
+      <div className="home-content container">
+        <TowersTable towers={mockTowers} />
+        <Charts towers={mockTowers} />
+      </div>
     </>
-  )
+  );
 }
 
-export default Home
+export default Home;

@@ -1,0 +1,47 @@
+@use "../../styles/variables" as v;
+
+.charts {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  &__header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  &__title {
+    font-size: 28px;
+    font-weight: 700;
+    color: v.$color-dark-gray;
+    margin-bottom: 8px;
+  }
+
+  &__subtitle {
+    font-size: 16px;
+    color: v.$color-medium-gray;
+  }
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+
+    text-align: center;
+
+    @media (min-width: v.$breakpoint-tablet) {
+      text-align: left;
+    }
+
+    &-title {
+      font-size: 24px;
+      font-weight: 600;
+      color: v.$color-dark-gray;
+      margin-bottom: 8px;
+    }
+
+    &-description {
+      font-size: 14px;
+      color: v.$color-medium-gray;
+      margin-bottom: 24px;
+    }
+  }
+}

@@ -69,8 +69,8 @@ const TowersTable: React.FC<TowersTableProps> = ({ towers }) => {
 
   return (
     <div className="towers-table">
-      <div className="towers-table__header container">
-        <h2 className="towers-table__title">Cell Towers Overview</h2>
+      <div className="towers-table__header">
+        <h2 className="towers-table__title">Towers Information</h2>
         <p className="towers-table__subtitle">
           {filteredTowers.length} of {towers.length} towers across{" "}
           {new Set(towers.map((t) => t.city)).size} cities
@@ -83,7 +83,7 @@ const TowersTable: React.FC<TowersTableProps> = ({ towers }) => {
       <Filters towers={towers} filters={filters} setFilters={setFilters} />
 
       {/* Table View */}
-      <div className="towers-table__container container">
+      <div className="towers-table__container">
         <table className="towers-table__table">
           <thead>
             <tr>

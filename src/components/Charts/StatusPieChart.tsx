@@ -39,10 +39,7 @@ const StatusPieChart: React.FC<StatusPieChartProps> = ({
     ).sort((a, b) => b.count - a.count);
 
     // Set up dimensions
-    const margin = { top: 20, right: 20, bottom: 20, left: 20 };
-    const chartWidth = width - margin.left - margin.right;
-    const chartHeight = height - margin.top - margin.bottom;
-    const radius = Math.min(chartWidth, chartHeight) / 2;
+    const radius = width / 2;
 
     // Create SVG
     const svg = d3
@@ -52,7 +49,7 @@ const StatusPieChart: React.FC<StatusPieChartProps> = ({
 
     const chart = svg
       .append("g")
-      .attr("transform", `translate(${width / 2}, ${height / 2})`);
+      .attr("transform", `translate(${width / 2}, ${height / 2 - 50})`);
 
     // Color scale
     const colorScale = d3
@@ -71,12 +68,6 @@ const StatusPieChart: React.FC<StatusPieChartProps> = ({
       .arc<d3.PieArcDatum<StatusData>>()
       .innerRadius(0)
       .outerRadius(radius);
-
-    // Create outer arc for labels
-    const outerArc = d3
-      .arc<d3.PieArcDatum<StatusData>>()
-      .innerRadius(radius * 0.9)
-      .outerRadius(radius * 0.9);
 
     // Add pie slices
     const slices = chart
@@ -136,58 +127,18 @@ const StatusPieChart: React.FC<StatusPieChartProps> = ({
       .attr("fill", "white")
       .text((d) => `${d.data.percentage.toFixed(0)}%`);
 
-    // Add labels
-    slices
-      .append("text")
-      .attr("x", (d) => {
-        const pos = outerArc.centroid(d);
-        const midAngle = d.startAngle + (d.endAngle - d.startAngle) / 2;
-        pos[0] = radius * 1.1 * (midAngle < Math.PI ? 1 : -1);
-        return pos[0];
-      })
-      .attr("y", (d) => {
-        const pos = outerArc.centroid(d);
-        return pos[1];
-      })
-      .attr("text-anchor", (d) => {
-        const midAngle = d.startAngle + (d.endAngle - d.startAngle) / 2;
-        return midAngle < Math.PI ? "start" : "end";
-      })
-      .attr("font-size", "12px")
-      .attr("font-weight", "500")
-      .attr("fill", "#181818")
-      .text(
-        (d) =>
-          `${d.data.status.charAt(0).toUpperCase() + d.data.status.slice(1)} (${
-            d.data.count
-          })`
-      );
-
-    // Add chart title
-    chart
-      .append("text")
-      .attr("class", "chart-title")
-      .attr("x", 0)
-      .attr("y", -radius - 20)
-      .attr("text-anchor", "middle")
-      .attr("font-size", "16px")
-      .attr("font-weight", "700")
-      .attr("fill", "#181818")
-      .text("Tower Status Distribution");
-
     // Add legend
     const legend = chart
       .append("g")
       .attr("class", "legend")
-      .attr("transform", `translate(${radius + 20}, -${radius / 2})`);
-
+      .attr("transform", `translate(${-radius / 2}, ${radius + 30})`);
     const legendItems = legend
       .selectAll(".legend-item")
       .data(statusData)
       .enter()
       .append("g")
       .attr("class", "legend-item")
-      .attr("transform", (d, i) => `translate(0, ${i * 25})`);
+      .attr("transform", (_, i) => `translate(${i * 90}, 0)`);
 
     legendItems
       .append("rect")
@@ -200,7 +151,7 @@ const StatusPieChart: React.FC<StatusPieChartProps> = ({
       .append("text")
       .attr("x", 20)
       .attr("y", 12)
-      .attr("font-size", "12px")
+      .attr("font-size", "14px")
       .attr("font-weight", "500")
       .attr("fill", "#181818")
       .text(

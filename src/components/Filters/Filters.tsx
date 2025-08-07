@@ -44,7 +44,7 @@ const Filters: React.FC<FiltersProps> = ({ towers, filters, setFilters }) => {
   const hasActiveFilters = filters.city || filters.network || filters.status;
 
   return (
-    <div className="filters container">
+    <div className="filters">
       {/* Search Input */}
       <div className="filters__search">
         <FaSearch className="search-icon" />
