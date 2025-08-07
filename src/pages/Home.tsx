@@ -53,7 +53,7 @@ function Home() {
 
   return (
     <>
-      {loading ? <HeaderShimmer /> : <Header towers={towers} />}
+      {loading ? <HeaderShimmer /> : <Header towers={towers} error={error} />}
       <div className="home-content container">
         {error ? (
           <div className="error-container">
