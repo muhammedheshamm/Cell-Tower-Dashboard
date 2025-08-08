@@ -24,6 +24,22 @@ A modern React dashboard for monitoring cell tower operations across multiple ci
 - **Vitest** + **React Testing Library** for testing
 - **ESLint** for code quality
 
+## Approach
+
+### Development Strategy
+
+- **Component-First**: Built reusable, atomic components with clear interfaces
+- **Type-Driven**: Leveraged TypeScript for robust development and error prevention
+- **Test-Driven**: Comprehensive testing strategy with 31 tests covering user interactions
+- **Performance-Focused**: Optimized animations and state management for smooth UX
+
+### Architecture Decisions
+
+- **Hooks over Classes**: Modern React patterns with custom hooks for logic reuse
+- **SCSS over CSS-in-JS**: Better performance and maintainability for styling
+- **Atomic Design**: Scalable component hierarchy from atoms to organisms
+- **Error-First**: Graceful error handling with retry mechanisms and fallback states
+
 ## Getting Started
 
 ### Prerequisites
