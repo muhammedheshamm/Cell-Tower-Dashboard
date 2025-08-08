@@ -67,6 +67,7 @@ const Filters: React.FC<FiltersProps> = ({ towers, filters, setFilters }) => {
         {/* City Filter */}
         <select
           value={filters.city}
+          name="city"
           onChange={(e) => handleFilterChange("city", e.target.value)}
           className={`filter-select-field ${filters.city ? "active" : ""}`}
         >
@@ -81,6 +82,7 @@ const Filters: React.FC<FiltersProps> = ({ towers, filters, setFilters }) => {
         {/* Network Filter */}
         <select
           value={filters.network}
+          name="network"
           onChange={(e) => handleFilterChange("network", e.target.value)}
           className={`filter-select-field ${filters.network ? "active" : ""}`}
         >
@@ -95,6 +97,7 @@ const Filters: React.FC<FiltersProps> = ({ towers, filters, setFilters }) => {
         {/* Status Filter */}
         <select
           value={filters.status}
+          name="status"
           onChange={(e) => handleFilterChange("status", e.target.value)}
           className={`filter-select-field ${filters.status ? "active" : ""}`}
         >
